@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Home Media Center</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="bower_components/components-bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" media="screen and (min-width:500px)" href="over500.css">
+        <link rel="stylesheet" href="main.css">
+        <script src="bower_components/video.js/src/css/video-js.scss"></script>
+        
+        <script src="bower_components/knockout/dist/knockout.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js"></script>-->
+        <script src="bower_components/jquery.js"></script>
+        <script src="bower_components/sammy.js"></script>
+        <script src="bower_components/requirejs/require.js"></script>
+        <script src="bower_components/video.js/src/js/video.js"></script>
+        
+    </head>
+    <body>
+       
+
+        
+        <!--After loading knockout.. have html elements-->
+        <ul class="nav nav-pills" data-bind="foreach:views">
+            <li data-bind="css: {active: $root.currentView() == $data}"> 
+                <a  data-bind="text:$data, attr:{href:'#' + $data}"></a>
+            </li>
+        </ul>
+        
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div data-bind="template: {name: currentView()}"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!--The three main views/pages-->
+        <div style="width: 100%"> 
+            <script type="text/html" id="Home">
+                <div>
+                    <h2>Home</h2>
+                    <div><p>Recently Watched</p></div>
+                    <div><p>Favourites</p></div>
+                    <div><p>Recently Added</p></div>
+                         
+                </div>
+            </script>
+            <script type="text/html" id="Movies">
+                <div>
+                    <h2>Movies</h2> 
+                    
+                    Number of Movies: <p data-bind="text: videoList().length"></p>   
+                    Active Icon: <p data-bind="text: selectedVideo"></p>     
+                         
+                    <div data-bind="foreach: videoList" class="outer-container">
+                       <div class="video-widget-container" data-bind="click: $parent.expandVideo, style: { backgroundImage: 'url(\'' + img + '\')'}, css: {'open-video': selected}">
+                       <div class="open-video" data-bind="visible: selected">
+                           <p>Only see this when visible expression is true</p>
+                           <video class="video-js" controls style="width:75%">
+                                <source src="/videos/trailer2.mp4"  type="video/mp4">
+                           </video>
+                       </div>
+                        <!--img path <span data-bind="text: img"> </span>:
+                        <p>Title: <span data-bind="text: title"></span></p>-->
+                       </div>
+                    </div>
+                    
+                    <video class="video-js" controls style="width:100%">
+                        <source src="/videos/trailer2.mp4"  type="video/mp4">
+                    </video>
+                    <!--<video src="trailer.mp4" autoplay style="width:100%"></video>-->
+                    
+                    <h1 data-bind="text: title">Hmmmmm</h1>
+
+                    <input type="text" data-bind="value: title, valueUpdate: 'afterkeydown'"/>
+                    <input type="submit" data-bind="click: addMovie">
+
+                    <div>
+                        <ul data-bind="foreach: array">
+                            <li data-bind="text: $data"></li>
+                        </ul>
+                    </div>   
+                </div>
+            </script>
+            <script type="text/html" id="Tv-shows">
+                 <div>
+                <h2>Tv-Shows</h2>
+                
+                <div data-bind="foreach: videoList" class="outer-container">
+                   <div class="video-widget-container" data-bind="click: $parent.openVideo, style: { backgroundImage: 'url(\'' + img + '\')'}">
+                   <a href="http://127.0.0.1:22642/index.html#Home"></a>
+                    <!--img path <span data-bind="text: img"> </span>:
+                    <p>Title: <span data-bind="text: title"></span></p>-->
+                   </div>
+                </div>
+                
+                <test-component></test-component>
+                <test-component></test-component>
+                <test-component></test-component>
+                </div>
+            </script>
+        </div>
+        
+        <!--Now load the JS file for view model / controller -->                
+        <script type='text/javascript' src='app.js'></script>
+
+    </body>
+</html>
+
+
+
+<!--
+<script type="text/html" id="Movies">
+    <div>
+        <h2>Movies</h2> 
+
+        Number of Movies: <p data-bind="text: videoList().length"></p>   
+        Active Icon: <p data-bind="text: selectedVideo"></p>     
+
+        <div data-bind="foreach: videoList" class="outer-container">
+           <div class="video-widget-container" data-bind="click: function() { $parent.expandVideo($index()) }, style: { backgroundImage: 'url(\'' + img + '\')'}, css: {'open-video': selected}">
+           </div>
+        </div>
+
+        <video class="video-js" controls style="width:100%">
+            <source src="/videos/trailer2.mp4"  type="video/mp4">
+        </video>
+
+        <h1 data-bind="text: title">Hmmmmm</h1>
+
+        <input type="text" data-bind="value: title, valueUpdate: 'afterkeydown'"/>
+        <input type="submit" data-bind="click: addMovie">
+
+        <div>
+            <ul data-bind="foreach: array">
+                <li data-bind="text: $data"></li>
+            </ul>
+        </div>   
+    </div>
+</script>-->
+
