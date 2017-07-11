@@ -1,0 +1,45 @@
+ 
+<h2>Movies Page loaded from external file..</h2>  
+<div data-bind="foreach: videoList" class="flip-container">
+ <div class="solid-container" data-bind="event: {mouseenter: function(){$parent.flipIt($index())}, mouseleave: function(){$parent.flipIt($index())}}">
+     
+ 
+  <div class="video-tile-container" data-bind="css: { flipped: $parent.videoList()[$index()].selected() }">
+       <!--front content-->
+       <div class="face video-tile-front" data-bind="style: { backgroundImage: 'url(\'' + img + '\')'}, visible: $parent.videoList()[$index()].selected() === false">
+       </div>
+       <!--back content-->
+       <div class="face video-tile-back" data-bind=" visible: $parent.videoList()[$index()].selected() === true">
+           <div class="card-title">
+               <p data-bind="text: $parent.videoList()[$index()].title"></p>
+           </div>
+           <div class="card-details">
+               <p >Details about this movies go here, plot, sdf sdfg fghy sdrte werfg dgh dfgs sdfds fdg </p> 
+           </div>
+           <div class="card-play-btn">
+               <a data-bind="click: function(){$root.goToVideo($index())}" class="btn">Watch Button </a>
+           </div>
+       </div>
+  </div>
+ </div>  
+   
+   
+   <!--<a data-bind="text: 'PLAY', click: $root.goToMovie"></a>--> 
+   
+</div>
+
+<div  data-bind="visible: selected">
+   <p>Only see this when visible expression is true</p>
+   <video class="video-js" controls style="width:75%">
+        <source src="/videos/trailer2.mp4"  type="video/mp4">
+   </video>
+</div>
+<!--img path <span data-bind="text: img"> </span>:
+<p>Title: <span data-bind="text: title"></span></p>-->
+
+
+<a class="btn" href="#!/Movies/fry">Show Background Img</a>
+    <div data-bind="page: {id: 'fry', beforeHide: beforeFryIsHidden, afterShow: afterFryIsDisplayed}">
+        Fry
+        <a class="btn" href="#!/Movies">Hide Background Img</a>
+</div>
