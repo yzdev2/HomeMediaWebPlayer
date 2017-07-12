@@ -33,7 +33,13 @@
 
         <div data-bind="page: {
                           id: 'Movies',
-                          source: '/views/movie_template.html'}">
+                          sourceOnShow: '/views/all_movies_template.html'}">
+        </div>
+        
+        <div data-bind="page: {
+                          id: 'selectedMovie', 
+                          params: ['title', 'description'],
+                          sourceOnShow: '/views/movie_template.html'}">
         </div>
 
         <div data-bind="page: {id: 'Tv-shows'}">

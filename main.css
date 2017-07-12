@@ -24,8 +24,8 @@ body {
     padding-top: 25px;
 }
 
-.flip-container{ /*//LIKE FLIP*/
-    -webkit-perspective: 2000;
+.flip-container{ 
+    /*-webkit-perspective: 2000;*/
     width: 100%;
     text-align: center;
 }
