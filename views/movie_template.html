@@ -1,15 +1,41 @@
  
 <h2>This Movie Page **** Loaded from external file</h2>  
 
-<h4 data-bind="text: title"></h4> 
+<h2 data-bind="text: $root.selectedMovie().title"></h2> 
 
-<h5 data-bind="text: description"></h5>
+Description:
+<h4 data-bind="text: $root.selectedMovie().description"></h4>
+
+
+<!--Movie ID 2:
+<h4 data-bind="text: movieObj.id"></h4> 
+
+Movie ID 3:
+<h4 data-bind="text: movieObj.title"></h4> 
+
+Movie ID 4:
+<h4 data-bind="text: movieObj"></h4> -->
+
+<!--Test ID:
+<h4 data-bind="text: testID"></h4> -->
+
+<!--Title:
+<h4 data-bind="text: title"></h4>-->
+
+<!--
+Title from Object:
+<h5 data-bind="text: movieObj.title"></h5>-->
 
 <div>
-   <p>Only see this when visible expression is true</p>
    <video class="video-js" controls style="width:75%">
         <source src="/videos/trailer2.mp4"  type="video/mp4">
    </video>
+</div>
+
+
+<div>
+    Playing this video??
+    <video-player params="value: $root.selectedMovie().video"></video-player>
 </div>
 <!--img path <span data-bind="text: img"> </span>:
 <p>Title: <span data-bind="text: title"></span></p>-->

@@ -18,8 +18,27 @@
            </div>
            <div class="card-play-btn">
                <!--<a data-bind="click: function(){$root.goToVideo($index())}" class="btn">Watch Button </a>-->
-               <a href="#!/selectedMovie?title=This Title&description=description I pass in parameters" class="btn">Watch Button </a>
-               <!--<a data-bind="page: {id: '?', sourceOnShow: 'video/{1}.html'}" class="btn">Watch Button </a>-->
+               
+               <!--<a href="#!/selectedMovie?movieID=90" class="btn">Watch Button </a>-->
+               
+               <!--<a class="btn" data-bind="attr: { href: '#!/selectedMovie?movieID='+id}">
+                    Open Video
+               </a>-->
+               
+               <!--<a class="btn" data-bind="attr: { href: '#!/selectedMovie?movieObj='+$parent.videoList()[$index()]}">
+                    Open Video
+               </a>-->
+               
+               <a class="btn" data-bind="click: function(){$parent.setMovie(id)}, href: '../selectedMovie' ">
+                    Play Video
+               </a>
+               
+               <!--<a class="btn" data-bind="click: function(){$parent.setMovie($index())}, page-href: {path: '../selectedMovie', params: {movieObj: $parent.videoList()[$index()].title }}">
+                    Open Video
+               </a>-->
+               
+               
+               <!--<a   , click: function(){$root.goToVideo(id)}     data-bind="page: {id: '?', sourceOnShow: 'video/{1}.html'}" class="btn">Watch Button </a>-->
            </div>
        </div>
   </div>

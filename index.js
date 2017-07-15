@@ -51,9 +51,34 @@ requirejs(['jquery','knockout','pager'], function ($, ko,pager) {
             self.videoList()[index].selected(!flipped); // toggle value
         };
         
-        self.goToVideo = function(index){
-            alert("Title Selected: " + self.videoList()[index].title);
+        self.selectedMovie = ko.observable();
+        
+        self.setMovie = function(id){
+            //alert("Index set to: " + id);
+            /* Set selected Movie */
+            console.log("Id passed in is = " + id);
+            self.selectedMovie(self.videoList()[id]);
+            console.log("First Movie title " + self.videoList()[0].title);
+            console.log("Selected Movie title " + self.videoList()[id].title);
+            console.log("Also Selected Movie title " + self.selectedMovie().title);
+            /*Go to play movie url*/
+            window.location.href = "#!/selectedMovie";
+            return true;
         }
+        
+        
+        ko.components.register('video-player', {
+            viewModel: function(params) {
+                // Data: value is either null, 'like', or 'dislike'
+                this.moviePath = params.value;
+                console.log("params.value = " + params.value);
+            },
+            template:
+                '<video class="video-js" controls style="width:75%">\
+                    <source src="/videos/trailer2.mp4"  type="video/mp4">\
+                </video>'
+        });
+        
         
         // jQuery selector to change on hiver..
         /*$("div.video-tile").click(function() {

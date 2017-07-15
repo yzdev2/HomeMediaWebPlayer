@@ -22,7 +22,7 @@
                 <span class="muted" data-bind="text: val('desc')"></span>
                 <!-- -->
             </a>
-        </li>
+        </li> 
     </ul>
     
     <div class="main-content">
@@ -38,7 +38,7 @@
         
         <div data-bind="page: {
                           id: 'selectedMovie', 
-                          params: ['title', 'description'],
+                          params: ['movieObj'],
                           sourceOnShow: '/views/movie_template.html'}">
         </div>
 
