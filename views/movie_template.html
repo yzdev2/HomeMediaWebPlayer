@@ -1,42 +1,34 @@
- 
-<h2>This Movie Page **** Loaded from external file</h2>  
+<div class="img-banner" >
+    <!--<img data-bind="attr: { src: '/videos/movie2banner.jpg'}" alt="#" />-->
+    <img data-bind="attr: { src: $root.selectedMovie().banner}" alt="#" />
+</div>
+<!--<div class="img-banner" >
+    backgroundImage: 'url(\'' + img + '\')'
+    <img data-bind="style: { backgroundImage: 'url(\'' + img + '\')'}}" alt="#" />
+</div-->
 
+
+<!--<h2 data-bind="text: $root.selectedMovie().banner"></h2>   -->  
+  
 <h2 data-bind="text: $root.selectedMovie().title"></h2> 
 
-Description:
 <h4 data-bind="text: $root.selectedMovie().description"></h4>
-
-
-<!--Movie ID 2:
-<h4 data-bind="text: movieObj.id"></h4> 
-
-Movie ID 3:
-<h4 data-bind="text: movieObj.title"></h4> 
-
-Movie ID 4:
-<h4 data-bind="text: movieObj"></h4> -->
-
-<!--Test ID:
-<h4 data-bind="text: testID"></h4> -->
-
-<!--Title:
-<h4 data-bind="text: title"></h4>-->
 
 <!--
 Title from Object:
 <h5 data-bind="text: movieObj.title"></h5>-->
 
-<div>
+<div class="video-container">
    <video class="video-js" controls style="width:75%">
         <source src="/videos/trailer2.mp4"  type="video/mp4">
    </video>
 </div>
 
 
-<div>
+<!--<div>
     Playing this video??
     <video-player params="value: $root.selectedMovie().video"></video-player>
-</div>
+</div>-->
 <!--img path <span data-bind="text: img"> </span>:
 <p>Title: <span data-bind="text: title"></span></p>-->
 

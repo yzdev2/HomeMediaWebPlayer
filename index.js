@@ -29,16 +29,16 @@ requirejs(['jquery','knockout','pager'], function ($, ko,pager) {
         
         // Simulate details of list of movies from backend
         self.videoList = ko.observableArray([
-            {id:"1", title:"Movie title 1 - long movie title for testing", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2001", selected: ko.observable(false)},
-            {id:"2", title:"Movie title 2", img:"/videos/movie2.jpg", video:"/videos/trailer2.mp4", year:"2002", selected: ko.observable(false)},
-            {id:"3", title:"Movie title 3", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2001", selected: ko.observable(false)},
-            {id:"4", title:"Movie title 4", img:"/videos/movie2.jpg", video:"/videos/trailer2.mp4", year:"2002", selected: ko.observable(false)},
-            {id:"5", title:"Movie title 5", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2003", selected: ko.observable(false)},
-            {id:"6", title:"Movie title 6", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2001", selected: ko.observable(false)},
-            {id:"7", title:"Movie title 7", img:"/videos/movie2.jpg", video:"/videos/trailer2.mp4", year:"2002", selected: ko.observable(false)},
-            {id:"8", title:"Movie title 8", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2001", selected: ko.observable(false)},
-            {id:"9", title:"Movie title 9", img:"/videos/movie2.jpg", video:"/videos/trailer2.mp4", year:"2002", selected: ko.observable(false)},
-            {id:"510", title:"Movie title 10", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2003", selected: ko.observable(false)}
+            {id:"1", title:"Lo And Behold - long movie title for testing", description:"Werner Herzog's exploration of the Internet and the connected world.", banner:"/videos/movie1banner.jpg", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2001", selected: ko.observable(false)},
+            {id:"2", title:"Movie title 2", description:"When a desperate movie producer fails to get a major star for his bargain basement film, he decides to shoot the film secretly around him.", banner:"/videos/movie2banner.jpg", img:"/videos/movie2.jpg", video:"/videos/trailer2.mp4", year:"2002", selected: ko.observable(false)},
+            {id:"3", title:"Lo And Behold", description:"Werner Herzog's exploration of the Internet and the connected world.", banner:"/videos/movie1banner.jpg", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2001", selected: ko.observable(false)},
+            {id:"4", title:"Movie title 4", description:"When a desperate movie producer fails to get a major star for his bargain basement film, he decides to shoot the film secretly around him.", banner:"/videos/movie2banner.jpg", img:"/videos/movie2.jpg", video:"/videos/trailer2.mp4", year:"2002", selected: ko.observable(false)},
+            {id:"5", title:"Lo And Behold", description:"Werner Herzog's exploration of the Internet and the connected world.", banner:"/videos/movie1banner.jpg", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2003", selected: ko.observable(false)},
+            {id:"6", title:"Lo And Behold", description:"Werner Herzog's exploration of the Internet and the connected world.", banner:"/videos/movie1banner.jpg", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2001", selected: ko.observable(false)},
+            {id:"7", title:"Movie title 7", description:"When a desperate movie producer fails to get a major star for his bargain basement film, he decides to shoot the film secretly around him.", banner:"/videos/movie2banner.jpg", img:"/videos/movie2.jpg", video:"/videos/trailer2.mp4", year:"2002", selected: ko.observable(false)},
+            {id:"8", title:"Lo And Behold", description:"Werner Herzog's exploration of the Internet and the connected world.", banner:"/videos/movie1banner.jpg", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2001", selected: ko.observable(false)},
+            {id:"9", title:"Movie title 9", description:"When a desperate movie producer fails to get a major star for his bargain basement film, he decides to shoot the film secretly around him.", banner:"/videos/movie2banner.jpg", img:"/videos/movie2.jpg", video:"/videos/trailer2.mp4", year:"2002", selected: ko.observable(false)},
+            {id:"510", title:"Lo And Behold", description:"Werner Herzog's exploration of the Internet and the connected world.", banner:"/videos/movie1banner.jpg", img:"/videos/movie1.jpg", video:"/videos/trailer.mp4", year:"2003", selected: ko.observable(false)}
         ]);
         
         /**
@@ -57,10 +57,11 @@ requirejs(['jquery','knockout','pager'], function ($, ko,pager) {
             //alert("Index set to: " + id);
             /* Set selected Movie */
             console.log("Id passed in is = " + id);
-            self.selectedMovie(self.videoList()[id]);
-            console.log("First Movie title " + self.videoList()[0].title);
-            console.log("Selected Movie title " + self.videoList()[id].title);
-            console.log("Also Selected Movie title " + self.selectedMovie().title);
+            for (i=0; i < self.videoList().length; i++){
+                if (self.videoList()[i].id === id){
+                  self.selectedMovie(self.videoList()[i]);  
+                } 
+            }
             /*Go to play movie url*/
             window.location.href = "#!/selectedMovie";
             return true;

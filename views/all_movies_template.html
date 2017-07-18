@@ -1,5 +1,5 @@
  
-<h2>Movies Page loaded from external file..</h2>  
+<h2>All Movies</h2>  
 <div data-bind="foreach: videoList" class="flip-container">
  <div class="solid-container" data-bind="event: {mouseenter: function(){$parent.flipIt($index())}, mouseleave: function(){$parent.flipIt($index())}}">
      
@@ -14,7 +14,7 @@
                <p data-bind="text: $parent.videoList()[$index()].title"></p>
            </div>
            <div class="card-details">
-               <p >Details about this movies go here, plot, sdf sdfg fghy sdrte werfg dgh dfgs sdfds fdg </p> 
+               <p data-bind="text: $parent.videoList()[$index()].description"></p> 
            </div>
            <div class="card-play-btn">
                <!--<a data-bind="click: function(){$root.goToVideo($index())}" class="btn">Watch Button </a>-->
@@ -29,7 +29,7 @@
                     Open Video
                </a>-->
                
-               <a class="btn" data-bind="click: function(){$parent.setMovie(id)}, href: '../selectedMovie' ">
+               <a class="btn" data-bind="click: function(){$parent.setMovie(id)}, href: 'selectedMovie' ">
                     Play Video
                </a>
                
@@ -44,9 +44,14 @@
   </div>
  </div>  
    
-   
    <!--<a data-bind="text: 'PLAY', click: $root.goToMovie"></a>--> 
    
+</div>
+
+<div data-bind="page: {
+                  id: 'selectedMovie', 
+                  params: ['movieObj'],
+                  sourceOnShow: '/views/movie_template.html'}">
 </div>
 
 <!--<div data-bind="page: {
